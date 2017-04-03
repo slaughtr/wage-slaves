@@ -23,6 +23,7 @@ _Example text for the description of the project_
 
 CREATE DATABASE wage_slaves;
 CREATE TABLE jobs (id serial PRIMARY KEY, name varchar, salary int, difficulty varchar, hours int, started timestamp, type varchar);
+CREATE TABLE workers (id serial PRIMARY KEY, name varchar, race varchar);
 CREATE database wage_slaves_test WITH TEMPLATE wage_slaves;
 
 ### License

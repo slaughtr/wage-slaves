@@ -44,6 +44,10 @@ public abstract class Job {
     return started;
   }
 
+  public String getType() {
+    return type;
+  }
+
   public void setDifficulty(String difficulty) {
     this.difficulty = difficulty;
   }
@@ -64,12 +68,12 @@ public abstract class Job {
   }
 
   @Override
-public boolean equals(Object otherJob){
-  if (!(otherJob instanceof Job)) {
-    return false;
-  } else {
-    Job newJob = (Job) otherJob;
-    return this.getName().equals(newJob.getName());
+  public boolean equals(Object otherJob){
+    if (!(otherJob instanceof Job)) {
+      return false;
+    } else {
+      Job newJob = (Job) otherJob;
+      return this.getName().equals(newJob.getName());
+    }
   }
-}
 }

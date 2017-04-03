@@ -22,20 +22,18 @@ public class Cook extends Job {
   public static Cook find(int id) {
     try(Connection con = DB.sql2o.open()) {
       String sql = "SELECT * FROM jobs where id=:id";
-      Cook constructor = con.createQuery(sql)
+      Cook cook = con.createQuery(sql)
         .addParameter("id", id)
         .throwOnMappingFailure(false)
         .executeAndFetchFirst(Cook.class);
-    return constructor;
+    return cook;
     }
   }
 
   public static List<Cook> all() {
     String sql = "SELECT * FROM jobs WHERE type='cook';";
     try(Connection con = DB.sql2o.open()) {
-      return con.createQuery(sql)
-      .throwOnMappingFailure(false)
-      .executeAndFetch(Cook.class);
+      return con.createQuery(sql).executeAndFetch(Cook.class);
     }
   }
 

@@ -33,9 +33,7 @@ public class Constructor extends Job {
 public static List<Constructor> all() {
   String sql = "SELECT * FROM jobs WHERE type='constructor';";
   try(Connection con = DB.sql2o.open()) {
-    return con.createQuery(sql)
-    .throwOnMappingFailure(false)
-    .executeAndFetch(Constructor.class);
+    return con.createQuery(sql).executeAndFetch(Constructor.class);
   }
 }
 

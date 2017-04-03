@@ -22,21 +22,19 @@ public class Entertainer extends Job {
   public static Entertainer find(int id) {
     try(Connection con = DB.sql2o.open()) {
       String sql = "SELECT * FROM jobs where id=:id";
-      Entertainer constructor = con.createQuery(sql)
+      Entertainer entertainer = con.createQuery(sql)
         .addParameter("id", id)
         .throwOnMappingFailure(false)
         .executeAndFetchFirst(Entertainer.class);
-    return constructor;
+    return entertainer;
     }
 }
 
-  public static List<Entertainer> all() {
-    String sql = "SELECT * FROM jobs WHERE type='entertainer';";
-    try(Connection con = DB.sql2o.open()) {
-      return con.createQuery(sql)
-      .throwOnMappingFailure(false)
-      .executeAndFetch(Entertainer.class);
-    }
+public static List<Entertainer> all() {
+  String sql = "SELECT * FROM jobs WHERE type='entertainer';";
+  try(Connection con = DB.sql2o.open()) {
+    return con.createQuery(sql).executeAndFetch(Entertainer.class);
+  }
 }
 
 

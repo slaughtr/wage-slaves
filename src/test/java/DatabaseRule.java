@@ -8,14 +8,12 @@ public class DatabaseRule extends ExternalResource {
     DB.sql2o = new Sql2o("jdbc:postgresql://localhost:5432/wage_slaves_test", null, null);
   }
 
-  // @Override
-  //   protected void after() {
-  //     try(Connection con = DB.sql2o.open()) {
-  //       String deletePersonsQuery = "DELETE FROM persons *;";
-  //       String deleteMonstersQuery = "DELETE FROM monsters *;";
-  //       con.createQuery(deletePersonsQuery).executeUpdate();
-  //       con.createQuery(deleteMonstersQuery).executeUpdate();
-  //     }
-  //   }
+  @Override
+    protected void after() {
+      try(Connection con = DB.sql2o.open()) {
+        String deleteJobsQuery = "DELETE FROM jobs *;";
+        con.createQuery(deleteJobsQuery).executeUpdate();
+      }
+    }
 
 }

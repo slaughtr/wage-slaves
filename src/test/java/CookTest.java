@@ -68,12 +68,38 @@ public class CookTest {
     testCook.save();
     assertTrue(Cook.all().get(0).equals(testCook));
   }
-  //
-  // @Test
-  // public void Cook_savesTypeIntoDatabaseCorrectly_true() {
-  //   Cook testCook = new Cook ("GosuHwang", 10, 20);
-  //   testCook.save();
-  //   assertEquals
-  // }
+  @Test
+  public void Cook_savesTypeIntoDatabaseCorrectly_true() {
+    Cook testCook = new Cook ("GosuHwang", 10, 20);
+    testCook.save();
+    assertTrue(testCook.getType().equals("cook"));
+  }
+
+  @Test
+  public void save_assignsIdToCook() {
+    Cook testCook = new Cook("GosuHwang", 10, 20);
+    testCook.save();
+    Cook savedCook = Cook.all().get(0);
+    assertEquals(savedCook.getId(), testCook.getId());
+  }
+
+  @Test
+  public void all_returnsAllInstancesOfCook_true() {
+    Cook firstCook = new Cook("GosuHwang", 10, 20);
+    firstCook.save();
+    Cook secondCook = new Cook("Spud", 3, 14);
+    secondCook.save();
+    assertEquals(true, Cook.all().get(0).equals(firstCook));
+    assertEquals(true, Cook.all().get(1).equals(secondCook));
+  }
+
+  @Test
+  public void find_returnsCookWithSameId_secondCook() {
+    Cook firstCook = new Cook("GosuHwang", 10, 20);
+    firstCook.save();
+    Cook secondCook = new Cook("Spud", 3, 14);
+    secondCook.save();
+    assertEquals(Cook.find(secondCook.getId()), secondCook);
+  }
 
 }

@@ -69,4 +69,39 @@ public class EntertainerTest {
     assertTrue(Entertainer.all().get(0).equals(testEntertainer));
   }
 
+  @Test
+  public void Entertainer_savesTypeIntoDatabaseCorrectly_true() {
+    Entertainer testEntertainer = new Entertainer ("GosuHwang", 10, 20);
+    testEntertainer.save();
+    assertTrue(testEntertainer.getType().equals("entertainer"));
+  }
+
+  @Test
+  public void save_assignsIdToEntertainer() {
+    Entertainer testEntertainer = new Entertainer("GosuHwang", 10, 20);
+    testEntertainer.save();
+    Entertainer savedEntertainer = Entertainer.all().get(0);
+    assertEquals(savedEntertainer.getId(), testEntertainer.getId());
+  }
+
+  @Test
+  public void all_returnsAllInstancesOfEntertainer_true() {
+    Entertainer firstEntertainer = new Entertainer("GosuHwang", 10, 20);
+    firstEntertainer.save();
+    Entertainer secondEntertainer = new Entertainer("Spud", 3, 14);
+    secondEntertainer.save();
+    assertEquals(true, Entertainer.all().get(0).equals(firstEntertainer));
+    assertEquals(true, Entertainer.all().get(1).equals(secondEntertainer));
+  }
+
+  @Test
+  public void find_returnsEntertainerWithSameId_secondEntertainer() {
+    Entertainer firstEntertainer = new Entertainer("GosuHwang", 10, 20);
+    firstEntertainer.save();
+    Entertainer secondEntertainer = new Entertainer("Spud", 3, 14);
+    secondEntertainer.save();
+    assertEquals(Entertainer.find(secondEntertainer.getId()), secondEntertainer);
+  }
+
+
 }
