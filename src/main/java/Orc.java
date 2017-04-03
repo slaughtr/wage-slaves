@@ -7,16 +7,14 @@ import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class Human extends Race {
+public class Orc extends Race {
 
-  public Human(String name) {
+  public Orc(String name) {
     this.name = name;
-    this.strength = 5;
-    this.stamina = 5;
-    this.charisma = 5;
-    this.intelligence = 5;
+    this.strength = 9;
+    this.stamina = 9;
+    this.charisma = 1;
+    this.intelligence = 1;
   }
-
-
 
 }

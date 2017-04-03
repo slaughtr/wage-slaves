@@ -21,6 +21,9 @@ _Example text for the description of the project_
 * _Run the command 'gradle run'_
 * _Open browser and go to localhost:4567_
 
+CREATE DATABASE wage_slaves;
+CREATE TABLE jobs (id serial PRIMARY KEY, name varchar, salary int, difficulty varchar, hours int, started timestamp, type varchar);
+CREATE database wage_slaves_test WITH TEMPLATE wage_slaves;
 
 ### License
 
